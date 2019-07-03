@@ -1,0 +1,247 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Panacea.System</name>
+    </assembly>
+    <members>
+        <member name="T:Panacea.System.Environment.CommonDirectoriesFinder">
+            <summary>
+            Exposes methods to retrieve directories which persist after swapping VHD
+            </summary>
+        </member>
+        <member name="M:Panacea.System.Environment.CommonDirectoriesFinder.#ctor">
+            <summary>
+            Creates an instance of <see cref="T:Panacea.System.Environment.CommonDirectoriesFinder"/>
+            </summary>
+        </member>
+        <member name="M:Panacea.System.Environment.CommonDirectoriesFinder.GetStorageVolumeInfo">
+            <summary>
+            Returns the drive for storage
+            </summary>
+            <returns>An instance of the VolumeInfo class that contains information about the volume that is used for storing files</returns>
+        </member>
+        <member name="M:Panacea.System.Environment.CommonDirectoriesFinder.GetVhdDirectory">
+            <summary>
+            Returns the directory where VHD files are stored
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Panacea.System.Environment.CommonDirectoriesFinder.GetSettingsDirectory">
+            <summary>
+            Returns the directory where applications can store data. If there is not 'Storage' labeled disk, it will return a directory inside %AppData%
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Panacea.System.Environment.CommonDirectoriesFinder.GetApplicationSettingsDirectory(System.String)">
+            <summary>
+            Returns the directory where the given application can store data
+            </summary>
+            <param name="applicationName">Unique application name</param>
+            <returns></returns>
+        </member>
+        <member name="P:Panacea.System.Environment.TerminalIdentificationInfo.Putik">
+            <summary>
+            This is the unique terminal Id in MAC address format (xx-xx-xx-xx-xx)
+            </summary>
+        </member>
+        <member name="P:Panacea.System.Environment.TerminalIdentificationInfo.PrivateKey">
+            <summary>
+            This is the private key used to encrypt/decrypt data
+            </summary>
+        </member>
+        <member name="P:Panacea.System.Environment.TerminalIdentificationInfo.PublicKey">
+            <summary>
+            This is the public key used to encrypt/decrypt
+            </summary>
+        </member>
+        <member name="T:Panacea.System.Environment.TerminalIdentificationManager">
+            <summary>
+            Offers API to identify a computer and get identification information
+            </summary>
+        </member>
+        <member name="M:Panacea.System.Environment.TerminalIdentificationManager.GetIdentificationInfoAsync">
+            <summary>
+            Gets the terminal identification info that is stored in the local file
+            </summary>
+            <returns>An instance of <see cref="T:Panacea.System.Environment.TerminalIdentificationInfo"/> that contains the terminal information</returns>
+        </member>
+        <member name="M:Panacea.System.Environment.TerminalIdentificationManager.IdentifyAsync">
+            <summary>
+            Performs an operation to identify the terminal and store the info in the file
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Panacea.System.Environment.Reference">
+            <summary>
+            Contains common constants
+            </summary>
+        </member>
+        <member name="T:Panacea.System.Environment.Reference.Disk">
+            <summary>
+            Contains constants related to disk agreed layout
+            </summary>
+        </member>
+        <member name="T:Panacea.System.Environment.Reference.Disk.Storage">
+            <summary>
+            Contains information about the volume which should be used for storage
+            </summary>
+        </member>
+        <member name="F:Panacea.System.Environment.Reference.Disk.Storage.Letter">
+            <summary>
+            The drive letter of the storage volume
+            </summary>
+        </member>
+        <member name="F:Panacea.System.Environment.Reference.Disk.Storage.Label">
+            <summary>
+            The label of the storage volume
+            </summary>
+        </member>
+        <member name="T:Panacea.System.Environment.Reference.Disk.System">
+            <summary>
+            Contains information about the volume which should be used for Sytem
+            </summary>
+        </member>
+        <member name="F:Panacea.System.Environment.Reference.Disk.System.Letter">
+            <summary>
+            The drive letter of the system volume
+            </summary>
+        </member>
+        <member name="F:Panacea.System.Environment.Reference.Disk.System.Label">
+            <summary>
+            The label of the system volume
+            </summary>
+        </member>
+        <member name="T:Panacea.System.Environment.Reference.Directory">
+            <summary>
+            Contains all directory names for common operations
+            </summary>
+        </member>
+        <member name="T:Panacea.System.Environment.Reference.Directory.Storage">
+            <summary>
+            Contains information about directories in Storage volume
+            </summary>
+        </member>
+        <member name="F:Panacea.System.Environment.Reference.Directory.Storage.VHD">
+            <summary>
+            The directory name where .vhd files will be stored
+            </summary>
+        </member>
+        <member name="F:Panacea.System.Environment.Reference.Directory.Storage.Settings">
+            <summary>
+            The directory name where applications can store data
+            </summary>
+        </member>
+        <member name="F:Panacea.System.Environment.Reference.Directory.Storage.Logs">
+            <summary>
+            The directory where applications can store logs
+            </summary>
+        </member>
+        <member name="T:Panacea.System.IO.DiskManagement.BcdEdit">
+            <summary>
+            Contains useful methods to extract information from bcdedit
+            </summary>
+        </member>
+        <member name="M:Panacea.System.IO.DiskManagement.BcdEdit.EnumAll">
+            <summary>
+            Runs 'bcdedit /enum ALL' and returns the output
+            </summary>
+            <returns>The output of bcdedit /enum ALL parsed in <see cref="T:Panacea.System.IO.DiskManagement.BcdObject"/>s</returns>
+        </member>
+        <member name="M:Panacea.System.IO.DiskManagement.BcdEdit.GetObjectsFromOutput(System.String)">
+            <summary>
+            Parses the output of bcdedit. Uses <seealso cref="M:Panacea.System.IO.DiskManagement.BcdEditOutputParser.Parse(System.String)"/>
+            </summary>
+            <param name="output"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Panacea.System.IO.DiskManagement.BcdEdit.GetCurrentVhdFileFromResult(System.String)">
+            <summary>
+            Returns the path of the vhd from where any BCD Object is set to boot.
+            </summary>
+            <param name="output">The output of the bcdedit /enum command</param>
+            <returns>The path of the vhd from where any BCD Object is set to boot</returns>
+        </member>
+        <member name="M:Panacea.System.IO.DiskManagement.BcdEdit.BcdVhdPathToPath(System.String)">
+            <summary>
+            Converts a string taken from bcdedit output that points to a .vhd file (vhd=[E:]\VHD\remedi_untested_latest.vhd) and converts it to an actual path (E:\VHD\remedi_untested_latest.vhd).
+            </summary>
+            <param name="path">The path to the vhd file as printed by bcdedit</param>
+            <returns></returns>
+        </member>
+        <member name="T:Panacea.System.IO.DiskManagement.BcdObject">
+            <summary>
+            Represents a BCD Object entry in bcdedit /enum output
+            </summary>
+        </member>
+        <member name="P:Panacea.System.IO.DiskManagement.BcdObject.Elements">
+            <summary>
+            The BCD Elements of the Object in dictionary format. Some elements may have multiple values.
+            </summary>
+        </member>
+        <member name="M:Panacea.System.IO.DiskManagement.IDiskPreparer.Run">
+            
+            https://docs.microsoft.com/en-us/windows-hardware/manufacture/desktop/boot-to-vhd--native-boot--add-a-virtual-hard-disk-to-the-boot-menu
+            This must create the required partitions
+            
+        </member>
+        <member name="M:Panacea.System.IO.DiskManagement.DiskPrepare.Bios.CreatePartition(Panacea.System.IO.DiskManagement.PartitionOptions)">
+            <summary>
+            Create the Diskpart command needed to create a partition.
+            </summary>
+            <param name="options">The disk creation options. Use to configure the diskpart command</param>
+        </member>
+        <member name="M:Panacea.System.IO.Logger.ConsoleLogger.Flush">
+            <summary>
+            Do not use this method. As since this is just using the Console, there is not need to flush
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Panacea.System.IO.Wmic.ManagementWmicReader.Query(System.String)">
+            This is an expense process. Optimize it queries are used alot.
+            Using some sort of cache implementation.
+            
+            Implementation (Not Reviewed)
+            http://www.sinbadsoft.com/blog/a-lru-cache-implementation/
+            
+        </member>
+        <member name="M:Panacea.System.Net.Extensions.WebRequestExtensions.GetResponseWithTimeoutAsync(System.Net.WebRequest,System.Int32)">
+            <summary>
+            Gets the <see cref="T:System.Net.WebResponse"/> from an Internet resource.
+            </summary>
+            <param name="request">The request.</param>
+            <returns>A <see cref="T:System.Net.WebResponse"/> that contains the response from the Internet resource.</returns>
+            <remarks>This method does not throw a <see cref="T:System.Net.WebException"/> for "error" status codes; the caller should
+            check the <see cref="!:WebResponse.StatusCode"/> property to determine how to handle the response.</remarks>
+        </member>
+        <member name="M:Panacea.System.Serialization.IConverter.Deserialize(System.String)">
+            <summary>
+            Deserializes a string to a dynamic type
+            </summary>
+            <param name="obj">The string to deserialize from</param>
+            <returns></returns>
+        </member>
+        <member name="M:Panacea.System.Serialization.IConverter.Deserialize``1(System.String)">
+            <summary>
+            Deserializes a string to an instance of type T
+            </summary>
+            <typeparam name="T">The type of the result</typeparam>
+            <param name="obj">The string to deserialize from</param>
+            <returns></returns>
+        </member>
+        <member name="M:Panacea.System.Serialization.IConverter.Serialize``1(``0)">
+            <summary>
+            Serializes an instance of type T to a string
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="obj">The instance to serialize into string</param>
+            <returns></returns>
+        </member>
+        <member name="M:Panacea.System.Serialization.IConverter.Serialize(System.Object)">
+            <summary>
+            Serializes a dynamic instance to a string
+            </summary>
+            <param name="obj">The instance to serialize into a string</param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

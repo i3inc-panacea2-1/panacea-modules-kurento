@@ -1,0 +1,11 @@
+﻿{
+  "BindUrl": "ws://0.0.0.0:64999/",
+  "Realms": [ "Export", "Local" ],
+  "Proxy": {
+    "Enabled": true,
+    "RealmToExpose": "Export",
+    "Url": "ws://wamp.internal.ci/ws",
+    "Realm": "panaceaAuth",
+    "Token": "0"
+  }
+}
