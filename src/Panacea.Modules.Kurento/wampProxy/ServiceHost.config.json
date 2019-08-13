@@ -4,7 +4,7 @@
   "Proxy": {
     "Enabled": true,
     "RealmToExpose": "Export",
-    "Url": "ws://wamp.internal.ci/ws",
+    "Url": "ws://172.17.82.94:8080/ws",
     "Realm": "panaceaAuth",
     "Token": "0"
   }
