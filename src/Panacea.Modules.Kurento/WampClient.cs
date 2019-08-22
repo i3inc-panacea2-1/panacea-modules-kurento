@@ -47,6 +47,12 @@ namespace Panacea.Modules.Kurento
                     catch (Exception ex)
                     {
                         _logger.Error(this, ex.Message);
+                        var exe = ex;
+                        while(exe.InnerException != null)
+                        {
+                            exe = exe.InnerException;
+                            _logger.Error(this, exe.Message);
+                        }
                         throw;
                     }
                 });
