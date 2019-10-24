@@ -1,5 +1,5 @@
 ﻿{
-  "BindUrl": "ws://0.0.0.0:64999/",
+  "BindUrl": "ws://0.0.0.0:64901/",
   "Realms": [ "Export", "Local" ],
   "Proxy": {
     "Enabled": true,

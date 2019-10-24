@@ -35,10 +35,26 @@ namespace Panacea.Modules.Kurento
             wampProxy.StartInfo.UseShellExecute = false;
             wampProxy.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
             wampProxy.StartInfo.CreateNoWindow = true;
+            wampProxy.StartInfo.RedirectStandardOutput = true;
+            wampProxy.StartInfo.RedirectStandardError = true;
+            wampProxy.OutputDataReceived += WampProxy_OutputDataReceived;
+            wampProxy.ErrorDataReceived += WampProxy_ErrorDataReceived;
             wampProxy.Start();
+            wampProxy.BeginOutputReadLine();
+            wampProxy.BeginErrorReadLine();
+            
             wampProxy.BindToCurrentProcess();
         }
 
+        private void WampProxy_ErrorDataReceived(object sender, DataReceivedEventArgs e)
+        {
+            _core.Logger.Error(this, e.Data);
+        }
+
+        private void WampProxy_OutputDataReceived(object sender, DataReceivedEventArgs e)
+        {
+            _core.Logger.Info(this, e.Data);
+        }
 
         public void Dispose()
         {

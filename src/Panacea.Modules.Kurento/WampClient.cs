@@ -12,7 +12,7 @@ namespace Panacea.Modules.Kurento
     public class WampClient
     {
         IWampChannel _remoteChannel;
-        const string location = "ws://127.0.0.1:64999/";
+        const string location = "ws://127.0.0.1:64901/";
         const string realm = "Export";
         WampChannelReconnector _reconnector;
 
@@ -53,6 +53,7 @@ namespace Panacea.Modules.Kurento
                             exe = exe.InnerException;
                             _logger.Error(this, exe.Message);
                         }
+                        await Task.Delay(5000);
                         throw;
                     }
                 });
